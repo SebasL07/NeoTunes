@@ -14,4 +14,11 @@ public abstract class Audio{
         this.duration = duration;
         this.numPlayed = numPlayed;
     }
+
+    public String toString(){
+        return "Nombre: " + name + "\n" + 
+        "Imagen: " + imageURL + "\n" +
+        "Duracion: " + duration + "\n" + 
+        "Numero de reproducciones: " + numPlayed + "\n";
+    }
 }

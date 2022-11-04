@@ -5,7 +5,7 @@ public class Standard extends Consumer{
     private Playlist[] playlists;
 
     public Standard(String nickname, String id, Date date){
-        super(nickname,id,date);;
+        super(nickname,id,date);
 
         playlists = new Playlist[MAX_PLAYLIST];
     }
