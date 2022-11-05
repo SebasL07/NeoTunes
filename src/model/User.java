@@ -18,7 +18,7 @@ public abstract class User{
         return nickname;
     }
 
-    public String geId(){
+    public String getId(){
         return id;
     }
 
