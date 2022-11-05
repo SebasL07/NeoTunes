@@ -50,6 +50,7 @@ public class NeoTunesMain{
 				break;
 
 			case 2:
+				
 				break;
 			case 0:
 				System.out.println("Que tenga buen dia. Gracias por usar la app");
@@ -70,6 +71,7 @@ public class NeoTunesMain{
 				addConsumerStandard();
 				break;
 			case 2:
+				addConsumerPremium();
 				break;
 		}
 
@@ -93,5 +95,25 @@ public class NeoTunesMain{
 		int year = reader.nextInt();
 
 		objTunes.addConsumerStandard(nickname, id, day, month, year);
+	}
+
+	public void addConsumerPremium(){
+
+		System.out.println("Ingrese el nickname del usuario");
+		String nickname = reader.next();
+
+		System.out.println("Ingrese la cedula del usaurio");
+		String id = reader.next();
+
+		System.out.println("Ingrese que dia de hoy (Solo numero)");
+		int day = reader.nextInt();
+
+		System.out.println("Ingrese en que mes estamos (Solo numero)");
+		int month = reader.nextInt();
+
+		System.out.println("Ingrese en que anio estamos (Solo numero)");
+		int year = reader.nextInt();
+
+		objTunes.addConsumerPremium(nickname, id, day, month, year);
 	}
 }

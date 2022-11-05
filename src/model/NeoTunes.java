@@ -5,6 +5,10 @@ public class NeoTunes{
     
     private ArrayList<User> users;
 
+    public NeoTunes(){
+        users = new ArrayList<User>();
+    }
+
     public String addConsumerStandard(String nickname, String id, int day, int month, int year){
         String msg = "";
         
@@ -18,12 +22,15 @@ public class NeoTunes{
     }
 
     public String addConsumerPremium(String nickname, String id, int day, int month, int year){
-        String msg = "";
+        String msg = "No se ha podido crear el usuario.";
         
         Date date = new Date(day, month, year);
 
         if(!userExist(nickname, id)){
             users.add(new Premium(nickname,id,date));
+        
+        } else {
+            msg += "El usuario ya existe";
         }
         
         return msg; 
@@ -43,4 +50,6 @@ public class NeoTunes{
 
         return exist;
     }
+
+    
 }
