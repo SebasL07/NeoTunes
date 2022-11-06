@@ -19,4 +19,19 @@ public class Artist extends Producer{
 
         return msg;
     }
+
+    public Song searchSong(String name){
+
+        Song objSong = null;
+        boolean flag = false;
+        
+        for(int i = 0; i<songs.size()&&!flag;i++){
+            if(songs.get(i).getName().equals(name)){
+                objSong = songs.get(i);
+                flag = true;
+            }
+        }
+
+        return objSong;
+    }
 }

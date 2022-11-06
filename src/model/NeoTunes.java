@@ -209,6 +209,14 @@ public class NeoTunes{
         return msg;
     }
 
+    public String addSong2Playlist(String id, String name){
+
+        String msg = "No se pudo adicionar la cancion";
+
+        
+        return msg;
+    }
+
 
 
 

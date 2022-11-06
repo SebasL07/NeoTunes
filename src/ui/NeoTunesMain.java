@@ -34,9 +34,12 @@ public class NeoTunesMain{
 
 	public int Menu(){
 
-		System.out.println("Que opcion del menu desea realizar? \n" + 
+		System.out.println("\nQue opcion del menu desea realizar? \n" + 
 		" 1) Registrar usuario consumidor \n" + 
-		" 2) Registrar usuario productor\n ");
+		" 2) Registrar usuario productor\n" +
+		" 3) Registrar tipo de audio\n" + 
+		" 4) Crear playlist\n" +
+		" 0) Salir de la app\n");
 		int option = reader.nextInt();
 
 		return option;
@@ -55,6 +58,10 @@ public class NeoTunesMain{
 				break;
 			case 3: 
 				addAudio();
+				break;
+
+			case 4: 
+				createPlaylist();
 				break;
 			case 0:
 				System.out.println("Que tenga buen dia. Gracias por usar la app");
@@ -265,5 +272,50 @@ public class NeoTunesMain{
 		String description = reader.next();
 
 		System.out.println(objTunes.addPodcast2ContentCreator(id, name, imageURL, duration, 0, description));
+	}
+
+	public void createPlaylist(){
+
+		System.out.println("De que tipo de usuario quiere crear la playlist\n" + 
+		" 1) Estandar\n" + 
+		" 2) Premium\n");	
+
+		int op = reader.nextInt();
+
+		switch (op) {
+			case 1:
+
+				createPlayistStandard();
+				
+				break;
+			case 2:
+
+				createPlayistPremium();
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	public void createPlayistStandard(){
+
+		System.out.println("Ingrese el id del usaurio en el que desea crear la playlist");
+		String id  = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist");
+		String name = reader.next();
+
+		System.out.println(objTunes.createPlayistStandard(id, name));
+	}
+
+	public void createPlayistPremium(){
+		System.out.println("Ingrese el id del usaurio en el que desea crear la playlist");
+		String id  = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist");
+		String name = reader.next();
+
+		System.out.println(objTunes.createPlayistPremium(id, name));
 	}
 }

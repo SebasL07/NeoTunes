@@ -24,6 +24,21 @@ public class Standard extends Consumer{
 
         return pos;
     } 
+
+    public int findPlaylist(String name){
+
+        int pos  = -1;
+        boolean flag = false;
+
+        for(int i = 0; i<MAX_PLAYLIST&&!flag;i++){
+            if(playlists[i].getName().equals(name)){
+                pos = i;
+                flag = true;
+            }
+        }
+
+        return pos;
+    }
     
     public String createPlaylist(String name){
 
@@ -40,5 +55,15 @@ public class Standard extends Consumer{
         }
 
         return msg;
+    }
+
+    public void addSong2Playlist(Song objSong, String name){
+
+        int pos = findPlaylist(name);
+
+        if(pos != -1){
+            playlists[pos].addSong(objSong);
+        }
+        
     }
 }

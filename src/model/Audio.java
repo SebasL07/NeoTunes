@@ -21,4 +21,8 @@ public abstract class Audio{
         "Duracion: " + duration + "\n" + 
         "Numero de reproducciones: " + numPlayed + "\n";
     }
+
+    public String getName(){
+        return name;
+    }
 }

@@ -25,6 +25,10 @@ public class Playlist{
 
         return countSong;
     }
+
+    public void addSong(Song song){
+        audios.add(song);
+    }
     
     public int countPodcasts(){
         int countPodcast = 0;
