@@ -8,12 +8,28 @@ public class Song extends Audio{
     
     private Gender gender;
 
-    public Song(String name, String imageURL, String duration, int numPlayed, String album, double price){
+    public Song(String name, String imageURL, String duration, int numPlayed, String album, double price, int opGender){
         super(name, imageURL, duration, numPlayed);
 
         this.album = album;
         this.price = price;
         numSales = 0;
+
+        switch (opGender) {
+            case 1:
+                gender = Gender.HOUSE;
+                break;
+            case 2: 
+                gender = Gender.POP;
+                break;
+            case 3: 
+                gender = Gender.ROCK;
+                break;
+            case 4: 
+                gender = Gender.TRAP;
+                break;
+            
+        }
 
     }
 

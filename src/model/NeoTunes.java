@@ -114,14 +114,14 @@ public class NeoTunes{
 
     }
 
-    public String addSong2Artist(String id,String name, String imageURL, String duration, int numPlayed, String album, double price){
+    public String addSong2Artist(String id,String name, String imageURL, String duration, int numPlayed, String album, double price, int opGender){
 
         String msg = "No se pudo crear la cancion.";
 
         Artist obArtist = searchArtist(id);
 
         if(obArtist != null){
-            obArtist.addSong(name, imageURL, duration, numPlayed, album, price);
+            obArtist.addSong(name, imageURL, duration, numPlayed, album, price, opGender);
             msg = "Se ha creado la cancion en la aplicacion";
         }else{
             msg += " Artista no existente.";
@@ -145,6 +145,71 @@ public class NeoTunes{
         
         return msg;
     }
+
+    public Standard searchStandard(String id){
+
+        Standard objAStandard = null;
+        
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i) instanceof Standard && users.get(i).getId().equals(id)){
+                objAStandard = (Standard) users.get(i);
+            }
+        }
+        return objAStandard;
+
+    }
+
+    public Premium searchPremium(String id){
+
+        Premium objPremium = null;
+        
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i) instanceof Premium && users.get(i).getId().equals(id)){
+                objPremium = (Premium) users.get(i);
+            }
+        }
+        return objPremium;
+
+    }
+
+    public String createPlayistStandard(String id, String name){
+
+        String msg = "No se ha podido crear la playlist.";
+
+        Standard obStandard = searchStandard(id);
+
+        if(obStandard != null){
+            
+            msg = obStandard.createPlaylist(name);
+          
+        } else{
+            msg += "El artista no existe";
+        }
+        
+
+        return msg;
+    }
+
+    public String createPlayistPremium(String id, String name){
+
+        String msg = "No se ha podido crear la playlist.";
+
+        Premium obPremium = searchPremium(id);
+
+        if(obPremium != null){
+            
+            obPremium.createPlaylist(name);
+            msg = "Se ha creado la playlist exitosamente";
+          
+        } else{
+            msg += "El creador no existe";
+        }
+        
+
+        return msg;
+    }
+
+
 
 
     

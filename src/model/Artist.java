@@ -11,10 +11,10 @@ public class Artist extends Producer{
         songs = new ArrayList<Song>();
     }
 
-    public String addSong(String name, String imageURL, String duration, int numPlayed, String album, double price){
+    public String addSong(String name, String imageURL, String duration, int numPlayed, String album, double price, int opGender){
         String msg = "No se pudo crear la cancion";
 
-        songs.add(new Song(name, imageURL, duration, numPlayed, album, price));
+        songs.add(new Song(name, imageURL, duration, numPlayed, album, price, opGender));
         msg = "Se creo exitosamente el la cancion";
 
         return msg;

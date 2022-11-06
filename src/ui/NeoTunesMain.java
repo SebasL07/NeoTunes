@@ -225,7 +225,7 @@ public class NeoTunesMain{
 		System.out.println("Ingrese el url de una imagen del album ala que pertence la cancion");
 		String imageURL = reader.next();
 
-		System.out.println("Ingrese la duracion de la cancion");
+		System.out.println("Ingrese la duracion de la cancion. En el formato HH:MM:SS");
 		String duration = reader.next();
 
 		System.out.println("Ingrese el numero de reproducciones de la cancion");
@@ -234,9 +234,36 @@ public class NeoTunesMain{
 		System.out.println("Ingrese el album al que pertence la cancion");
 		String album = reader.next();
 
+		System.out.println("Ingrese que genero es la cancion: \n" + 
+		" 1) House\n" + 
+		" 2) Pop\n" + 
+		" 3) Rock\n" + 
+		" 4) Trap\n");
+		int opGender = reader.nextInt();
+
 		System.out.println("Ingrese el precio de la cancion");
 		double price = reader.nextDouble();
 
-		System.out.println(objTunes.addSong2Artist(id, name, imageURL, duration, numPlayed, album, price));
+		System.out.println(objTunes.addSong2Artist(id, name, imageURL, duration, numPlayed, album, price,opGender));
+	}
+
+	public void addPremium(){
+
+		System.out.println("Ingrese el id del creador de contenido al que le pertenece el podcast");
+		String id = reader.next();
+
+		System.out.println("Ingrese el nombre de la canción");
+		String name = reader.next();
+
+		System.out.println("Ingrese el url de la imagen que representa el podcast");
+		String imageURL = reader.next();
+
+		System.out.println("Ingrese la duracion del podcast. En el formato HH:MM:SS");
+		String duration = reader.next();
+
+		System.out.println("Ingrese la descripcion del podcast");
+		String description = reader.next();
+
+		System.out.println(objTunes.addPodcast2ContentCreator(id, name, imageURL, duration, 0, description));
 	}
 }

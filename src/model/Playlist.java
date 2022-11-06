@@ -37,6 +37,10 @@ public class Playlist{
         return countPodcast;
     }
 
+    public String getName(){
+        return name;
+    }
+
     
 
 

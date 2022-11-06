@@ -13,5 +13,13 @@ public class Premium extends Consumer{
 
     }
 
+    public String createPlaylist(String name){
+
+        playlists.add(new Playlist(name));
+
+        return "Se creo la playlist exitosamenete";
+
+    }
+
     
 }
