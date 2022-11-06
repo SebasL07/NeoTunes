@@ -5,12 +5,30 @@ public abstract class Producer extends User{
     private String name;
     private String imageURL;
     private int playedTime;
+    private int reproductions;
 
-    public Producer(String nickname, String id, Date date, String name, String imageURL, int playedTime){
+    public Producer(String nickname, String id, Date date, String name, String imageURL){
         super(nickname,id,date);
 
         this.name = name;
         this.imageURL = imageURL;
-        this.playedTime = playedTime;
+        playedTime = 0;
+        reproductions = 0;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public String getImageURL(){
+        return imageURL;
+    }
+
+    public int getPlayedTime(){
+        return playedTime;
+    }
+
+    public int getReproductions(){
+        return reproductions;
     }
 }

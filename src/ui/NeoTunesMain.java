@@ -1,5 +1,6 @@
 package ui;
 import java.util.Scanner;
+
 import model.NeoTunes;
 
 //javac -cp src src/ui/Template.java -d bin
@@ -50,7 +51,10 @@ public class NeoTunesMain{
 				break;
 
 			case 2:
-				
+				addProducer();
+				break;
+			case 3: 
+				addAudio();
 				break;
 			case 0:
 				System.out.println("Que tenga buen dia. Gracias por usar la app");
@@ -77,6 +81,26 @@ public class NeoTunesMain{
 
 	}
 
+	public void addProducer(){
+
+		System.out.println("Que tipo de usuario productor desea adicionar? \n" + 
+		"1) Artista\n" + 
+		"2) Creador de contenido\n");
+
+		int option = reader.nextInt();
+
+		switch(option){
+
+			case 1:
+				addProducerArtist();
+				break;
+			case 2:
+				addProducerContentCreator();
+				break;
+		}
+
+	}
+
 	public void addConsumerStandard(){
 
 		System.out.println("Ingrese el nickname del usuario");
@@ -94,7 +118,7 @@ public class NeoTunesMain{
 		System.out.println("Ingrese en que anio estamos (Solo numero)");
 		int year = reader.nextInt();
 
-		objTunes.addConsumerStandard(nickname, id, day, month, year);
+		System.out.println(objTunes.addConsumerStandard(nickname, id, day, month, year)); 
 	}
 
 	public void addConsumerPremium(){
@@ -114,6 +138,105 @@ public class NeoTunesMain{
 		System.out.println("Ingrese en que anio estamos (Solo numero)");
 		int year = reader.nextInt();
 
-		objTunes.addConsumerPremium(nickname, id, day, month, year);
+		System.out.println(objTunes.addConsumerPremium(nickname, id, day, month, year)); 
+	}
+
+	public void addProducerArtist(){
+
+		System.out.println("Ingrese el nickname del usuario");
+		String nickname = reader.next();
+
+		System.out.println("Ingrese la cedula del usaurio");
+		String id = reader.next();
+
+		System.out.println("Ingrese que dia de hoy (Solo numero)");
+		int day = reader.nextInt();
+
+		System.out.println("Ingrese en que mes estamos (Solo numero)");
+		int month = reader.nextInt();
+
+		System.out.println("Ingrese en que anio estamos (Solo numero)");
+		int year = reader.nextInt();
+
+		System.out.println("Ingrese el nombre real del artista");
+		String name = reader.next();
+
+		System.out.println("Ingrese el url de la imagen que representa el artista");
+		String imageURL = reader.next();
+
+		System.out.println(objTunes.addProducerArtist(nickname, id, day, month, year, name, imageURL)); 
+
+		
+	}
+
+	public void addProducerContentCreator(){
+
+		System.out.println("Ingrese el nickname del usuario");
+		String nickname = reader.next();
+
+		System.out.println("Ingrese la cedula del usaurio");
+		String id = reader.next();
+
+		System.out.println("Ingrese que dia de hoy (Solo numero)");
+		int day = reader.nextInt();
+
+		System.out.println("Ingrese en que mes estamos (Solo numero)");
+		int month = reader.nextInt();
+
+		System.out.println("Ingrese en que anio estamos (Solo numero)");
+		int year = reader.nextInt();
+
+		System.out.println("Ingrese el nombre real del artista");
+		String name = reader.next();
+
+		System.out.println("Ingrese el url de la imagen que representa el artista");
+		String imageURL = reader.next();
+
+		System.out.println(objTunes.addProducerContentCreator(nickname, id, day, month, year, name, imageURL)); 
+
+		
+	}
+
+	public void addAudio(){
+		System.out.println("Que tipo de audio desea adicionar?\n" + 
+		" 1) Cancion\n" + 
+		" 2) Podcast\n");
+		int option = reader.nextInt();
+
+		switch(option){
+
+			case 1:
+				addSong();
+				break;
+
+			case 2: 
+				break;
+		}
+	}
+
+	public void addSong(){
+
+		System.out.println("Ingrese la cedula del artista al que le pertence la cancion");
+		String id = reader.next();
+
+		System.out.println("Ingrese el nombre de la cancion");
+		String name = reader.next();
+
+		System.out.println("Ingrese el url de una imagen del album ala que pertence la cancion");
+		String imageURL = reader.next();
+
+		System.out.println("Ingrese la duracion de la cancion");
+		String duration = reader.next();
+
+		System.out.println("Ingrese el numero de reproducciones de la cancion");
+		int numPlayed = reader.nextInt();
+
+		System.out.println("Ingrese el album al que pertence la cancion");
+		String album = reader.next();
+
+		System.out.println("Ingrese el precio de la cancion");
+		double price = reader.nextDouble();
+
+		System.out.println(objTunes.addSong2Artist(id, name, imageURL, duration, numPlayed, album, price));
 	}
 }

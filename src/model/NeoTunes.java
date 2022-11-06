@@ -1,6 +1,7 @@
 package model;
 import java.util.ArrayList;
 
+
 public class NeoTunes{
     
     private ArrayList<User> users;
@@ -10,12 +11,15 @@ public class NeoTunes{
     }
 
     public String addConsumerStandard(String nickname, String id, int day, int month, int year){
-        String msg = "";
+        String msg = "No se ha podido crear el usuario.";
         
         Date date = new Date(day, month, year);
 
         if(!userExist(nickname, id)){
             users.add(new Standard(nickname,id,date));
+            msg = "Se creo exitosamente el usuario";
+        }else {
+            msg += "El usuario ya existe";
         }
         
         return msg; 
@@ -28,6 +32,7 @@ public class NeoTunes{
 
         if(!userExist(nickname, id)){
             users.add(new Premium(nickname,id,date));
+            msg = "Se creo exitosamente el usuario";
         
         } else {
             msg += "El usuario ya existe";
@@ -51,5 +56,97 @@ public class NeoTunes{
         return exist;
     }
 
+    public String addProducerArtist(String nickname, String id, int day, int month, int year, String name, String imageURL){
+        String msg = "No se ha podido crear el usuario.";
+
+        Date date = new Date(day, month, year);
+
+        if(!userExist(nickname, id)){
+            users.add(new Artist(nickname, id, date, name, imageURL));
+            msg = "Se creo exitosamente el usuario";
+        
+        } else {
+            msg += "El usuario ya existe";
+        }
+
+        return msg;
+    }
+
+    public String addProducerContentCreator(String nickname, String id, int day, int month, int year, String name, String imageURL){
+        String msg = "No se ha podido crear el usuario.";
+
+        Date date = new Date(day, month, year);
+
+        if(!userExist(nickname, id)){
+            users.add(new ContentCreator(nickname, id, date, name, imageURL));
+            msg = "Se creo exitosamente el usuario";
+        
+        } else {
+            msg += "El usuario ya existe";
+        }
+
+        return msg;
+    }
+
+    public Artist searchArtist(String id){
+
+        Artist objArtist = null;
+        
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i) instanceof Artist && users.get(i).getId().equals(id)){
+                objArtist = (Artist) users.get(i);
+            }
+        }
+        return objArtist;
+
+    }
+
+    public ContentCreator searchContentCreator(String id){
+
+       ContentCreator objContentCreator = null;
+        
+        for(int i = 0; i<users.size();i++){
+            if(users.get(i) instanceof ContentCreator && users.get(i).getId().equals(id)){
+                objContentCreator = (ContentCreator) users.get(i);
+            }
+        }
+        return objContentCreator;
+
+    }
+
+    public String addSong2Artist(String id,String name, String imageURL, String duration, int numPlayed, String album, double price){
+
+        String msg = "No se pudo crear la cancion.";
+
+        Artist obArtist = searchArtist(id);
+
+        if(obArtist != null){
+            obArtist.addSong(name, imageURL, duration, numPlayed, album, price);
+            msg = "Se ha creado la cancion en la aplicacion";
+        }else{
+            msg += " Artista no existente.";
+        } 
+        
+        return msg;
+    }
+
+    public String addPodcast2ContentCreator(String id, String name, String imageURL, String duration, int numPlayed, String description){
+
+        String msg = "No se pudo crear el podcast.";
+
+        ContentCreator obContentCreator =  searchContentCreator(id);
+
+        if(obContentCreator != null){
+            obContentCreator.addPodcast(name, imageURL, duration, numPlayed, description);
+            msg = "Se ha creado el podcast en la aplicacion";
+        } else{
+            msg += " Artista no existente.";
+        }
+        
+        return msg;
+    }
+
+
+    
     
 }
