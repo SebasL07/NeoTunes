@@ -209,13 +209,104 @@ public class NeoTunes{
         return msg;
     }
 
-    public String addSong2Playlist(String id, String name){
+    public String addSong2PlaylistStandard(String idStandard, String nameSong, String idArtist, String namePlaylist){
 
-        String msg = "No se pudo adicionar la cancion";
+        String msg = "No se pudo adicionar la cancion.";
 
-        
+        Artist objArtist = searchArtist(idArtist);
+
+        Standard objStandard = searchStandard(idStandard);
+
+        if(objArtist != null && objStandard != null){
+            Song song = objArtist.searchSong(nameSong);
+
+            if(song != null){
+                msg = objStandard.addSong2Playlist(song, namePlaylist);
+            } else{
+                msg += " No existe " + nameSong + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
         return msg;
     }
+
+    public String addSong2PlaylistPremium(String idPremium, String nameSong, String idArtist, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        Artist objArtist = searchArtist(idArtist);
+
+        Premium objPremium = searchPremium(idPremium);
+
+        if(objArtist != null && objPremium != null){
+            Song song = objArtist.searchSong(nameSong);
+
+            if(song != null){
+                msg = objPremium.addSong2Playlist(song, namePlaylist);
+            } else{
+                msg += " No existe " + nameSong + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
+    public String addPodcast2PlaylistStandard(String idStandard, String namePodcast, String idContentCreator, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        ContentCreator objCreator = searchContentCreator(idContentCreator);
+
+        Standard objStandard = searchStandard(idStandard);
+
+        if(objCreator != null && objStandard != null){
+            Podcast podcast = objCreator.searchPodcast(namePodcast);
+
+            if(podcast != null){
+                msg = objStandard.addPodcast2Playlist(podcast, namePlaylist);
+            } else{
+                msg += " No existe " + namePodcast + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
+    public String addPodcast2PlaylistPremium(String idPremium, String namePodcast, String idContentCreator, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        ContentCreator objCreator = searchContentCreator(idContentCreator);
+
+        Premium premium = searchPremium(idPremium);
+
+        if(objCreator != null && premium != null){
+            
+            Podcast podcast = objCreator.searchPodcast(namePodcast);
+
+            if(podcast != null){
+                msg = premium.addPodcast2Playlist(podcast, namePlaylist);
+            } else{
+                msg += " No existe " + namePodcast + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
+    
 
 
 

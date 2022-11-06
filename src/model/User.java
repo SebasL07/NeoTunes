@@ -25,4 +25,9 @@ public abstract class User{
     public Date getVinculationDate(){
         return vinculationDate;
     }
+
+    public String toString(){
+        return "Nickname: " + nickname + "\n" + 
+        "ID: " + id + "\n";
+    }
 }

@@ -20,4 +20,19 @@ public class ContentCreator extends Producer{
 
         return msg;
     }
+
+    public Podcast searchPodcast(String name){
+
+        Podcast objPodcast = null;
+        boolean flag = false;
+        
+        for(int i = 0; i<podcasts.size()&&!flag;i++){
+            if(podcasts.get(i).getName().equals(name)){
+                objPodcast = podcasts.get(i);
+                flag = true;
+            }
+        }
+
+        return objPodcast;
+    }
 }

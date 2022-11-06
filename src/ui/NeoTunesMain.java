@@ -39,6 +39,7 @@ public class NeoTunesMain{
 		" 2) Registrar usuario productor\n" +
 		" 3) Registrar tipo de audio\n" + 
 		" 4) Crear playlist\n" +
+		" 5) Modificar playlist\n" +
 		" 0) Salir de la app\n");
 		int option = reader.nextInt();
 
@@ -62,6 +63,10 @@ public class NeoTunesMain{
 
 			case 4: 
 				createPlaylist();
+				break;
+			
+			case 5: 
+				modifyPlaylist();
 				break;
 			case 0:
 				System.out.println("Que tenga buen dia. Gracias por usar la app");
@@ -310,6 +315,7 @@ public class NeoTunesMain{
 	}
 
 	public void createPlayistPremium(){
+
 		System.out.println("Ingrese el id del usaurio en el que desea crear la playlist");
 		String id  = reader.next();
 
@@ -318,4 +324,73 @@ public class NeoTunesMain{
 
 		System.out.println(objTunes.createPlayistPremium(id, name));
 	}
+
+	public void modifyPlaylist(){
+		System.out.println("Que desea hacer con la playlist?\n" +
+		" 1) Adcionar audio\n" + 
+		" 2) Borrar audio\n");
+		int op = reader.nextInt();
+
+		switch(op){
+
+			case 1: 
+				addAudio2Playlist();
+				break;
+
+			case 2: 
+				break;
+		}
+	}
+
+	public void addAudio2Playlist(){
+		System.out.println("Que tipo de audio adicionara?\n" +
+		" 1) Cancion\n" + 
+		" 2) Podcast\n");
+		int op = reader.nextInt();
+
+		switch(op){
+
+			case 1: 
+				addSong2Playlist();
+				break;
+
+			case 2:
+				break;
+
+		}
+	}
+
+	public void addSong2Playlist(){
+
+		System.out.println("A que tipo de usaurio adicionara la cancion: \n" +
+		" 1) Estandar\n" + 
+		" 2) Premium\n");
+		int op = reader.nextInt();
+
+		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
+		String id = reader.next();
+
+		System.out.println("Ingrese el id del artista al que pertence la cancion");
+		String idArtist = reader.next();
+
+		System.out.println("Ingrese el nombre de la cancion");
+		String nameSong = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist a la que quiere adicionar la cancion");
+		String namePlaylist = reader.next();
+
+		switch(op){
+
+			case 1: 
+				System.out.println(objTunes.addSong2PlaylistStandard(id, nameSong, idArtist, namePlaylist));
+				break;
+
+			case 2:
+				System.out.println(objTunes.addSong2PlaylistPremium(id, nameSong, idArtist, namePlaylist)); 
+				break;
+
+		}
+	}
+
+
 }

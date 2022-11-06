@@ -57,13 +57,33 @@ public class Standard extends Consumer{
         return msg;
     }
 
-    public void addSong2Playlist(Song objSong, String name){
+    public String addSong2Playlist(Song objSong, String name){
 
+        String msg = "No se pudo adicionar la cancion a la playlist.";
         int pos = findPlaylist(name);
 
         if(pos != -1){
             playlists[pos].addSong(objSong);
+        } else{
+            msg += " La playlist no existe";
         }
+
+        return msg;
+        
+    }
+
+    public String addPodcast2Playlist(Podcast objPodcast, String name){
+
+        String msg = "No se pudo adicionar el podcast a la playlist.";
+        int pos = findPlaylist(name);
+
+        if(pos != -1){
+            playlists[pos].addPodcast(objPodcast);
+        } else{
+            msg += " La playlist no existe";
+        }
+
+        return msg;
         
     }
 }

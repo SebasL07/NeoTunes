@@ -30,6 +30,10 @@ public class Playlist{
         audios.add(song);
     }
     
+    public void addPodcast(Podcast podcast){
+        audios.add(podcast);
+    }
+    
     public int countPodcasts(){
         int countPodcast = 0;
         for(int i = 0; i < audios.size(); i++){
