@@ -1,16 +1,20 @@
 package model;
 import java.util.ArrayList;
 
+
+
 public class Playlist{
 
-
+    private static final int MAX_CODE = 6;
     private ArrayList<Audio> audios; 
 
     private String name;
-    private String id;
+    private int[][] id;
 
     public Playlist(String name){
         this.name = name;
+
+        id = new int[MAX_CODE][MAX_CODE];
 
         audios = new ArrayList<Audio>();
     }
@@ -47,6 +51,22 @@ public class Playlist{
 
     public String getName(){
         return name;
+    }
+
+    public String generSharePlaylist(){
+
+        for(int i = 0; i<MAX_CODE;i++){
+            for(int j= 0; j<id[0].length;j++){
+                id[i][j] = (int) (Math.random() * 9);
+            }
+        }
+
+        String shareId = "";
+
+
+
+        return shareId;
+
     }
 
     
