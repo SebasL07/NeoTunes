@@ -355,6 +355,7 @@ public class NeoTunesMain{
 				break;
 
 			case 2:
+			 	addPodcast2Playlist();
 				break;
 
 		}
@@ -389,6 +390,38 @@ public class NeoTunesMain{
 				System.out.println(objTunes.addSong2PlaylistPremium(id, nameSong, idArtist, namePlaylist)); 
 				break;
 
+		}
+	}
+
+	public void addPodcast2Playlist(){
+
+		System.out.println("A que tipo de usaurio adicionara la cancion: \n" +
+		" 1) Estandar\n" + 
+		" 2) Premium\n");
+		int op = reader.nextInt();
+
+		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
+		String id = reader.next();
+
+		System.out.println("Ingrese el id del creador de contenido");
+		String idContentCreator = reader.next();
+
+		System.out.println("Ingrese el nombre del podcast");
+		String namePodcast = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist a la que quiere adicionar la cancion");
+		String namePlaylist = reader.next();
+
+		switch (op) {
+			case 1:
+				System.out.println(objTunes.addPodcast2PlaylistStandard(id, namePodcast, idContentCreator, namePlaylist));
+				break;
+			
+			case 2:
+				System.out.println(objTunes.addPodcast2PlaylistPremium(id, namePodcast, idContentCreator, namePlaylist));
+				break;
+			default:
+				break;
 		}
 	}
 
