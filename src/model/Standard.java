@@ -42,16 +42,18 @@ public class Standard extends Consumer{
     
     public String createPlaylist(String name){
 
-        String msg = "No se ha podido crear la playlist";
+        String msg = "No se ha podido crear la playlist. ";
 
         int pos = findFreeSpace();
 
-        if(pos == -1){
+        if(pos != -1){
 
             playlists[pos] = new Playlist(name);
             msg = "Se ha creado la playlist " + name;  
+
         } else{
-            msg += "No hay espacio para mas playlists";
+
+            msg += "No hay espacio para mas playlists.";
         }
 
         return msg;
@@ -64,6 +66,7 @@ public class Standard extends Consumer{
 
         if(pos != -1){
             playlists[pos].addSong(objSong);
+            msg = "Se  ha adicionado la cancion exitosamente";
         } else{
             msg += " La playlist no existe";
         }

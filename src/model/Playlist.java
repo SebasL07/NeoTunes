@@ -53,15 +53,32 @@ public class Playlist{
         return name;
     }
 
+    public String showID(){
+
+        String msg = "";
+
+        for(int i = 0;i<id.length;i++){
+            msg += "[";
+            for(int j = 0; j<id[0].length;j++){
+                msg += id[i][j];
+            }
+            msg += "] \n";
+        }
+
+        return msg;
+    }
+
     public String generSharePlaylist(){
 
+        
         for(int i = 0; i<MAX_CODE;i++){
             for(int j= 0; j<id[0].length;j++){
                 id[i][j] = (int) (Math.random() * 9);
             }
         }
 
-        String shareId = "";
+        String shareId = "Matriz del codigo:\n\n" + showID()
+        + "\n\n Codigo: ";
 
         int songsInPlaylist = countSongs();
         int podcastInPlaylist = countPodcasts();
@@ -87,6 +104,8 @@ public class Playlist{
 
 
         }
+
+        
 
 
         return shareId;
