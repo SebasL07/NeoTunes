@@ -306,6 +306,20 @@ public class NeoTunes{
         return msg;
     }
 
+    public String sharePlaylistStandard(String idStandard, String namePlaylist){
+
+        String idShare = "";
+
+        Standard obStandard = searchStandard(idStandard);
+
+        if(obStandard != null){
+
+            idShare  = obStandard.sharePlaylist(namePlaylist);
+        }
+
+        return idShare;
+    }
+
     
 
 

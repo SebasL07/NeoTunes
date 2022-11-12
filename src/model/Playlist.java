@@ -63,6 +63,30 @@ public class Playlist{
 
         String shareId = "";
 
+        int songsInPlaylist = countSongs();
+        int podcastInPlaylist = countPodcasts();
+
+        if(songsInPlaylist == 0 && podcastInPlaylist != 0){
+            
+            
+        } else if(songsInPlaylist != 0 && podcastInPlaylist == 0){
+
+            for(int i = id.length-1;i<=0;i--){
+                shareId += id[i][0];
+            }
+
+            for(int i = 1; i<id.length;i++){
+                shareId += id[i][i];
+            }
+
+            for(int i = id.length-2;i<=0;i--){
+                shareId += id[i][id.length-1];
+            }
+
+        } else if(songsInPlaylist != 0 && podcastInPlaylist != 0){
+
+
+        }
 
 
         return shareId;

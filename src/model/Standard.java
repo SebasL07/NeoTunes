@@ -86,4 +86,17 @@ public class Standard extends Consumer{
         return msg;
         
     }
+
+    public String sharePlaylist(String namePlaylist){
+
+        String msg = "";
+
+        int pos = findPlaylist(namePlaylist);
+
+        if(pos != -1){
+            msg = playlists[pos].generSharePlaylist();
+        }
+
+        return msg;
+    }
 }
