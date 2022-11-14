@@ -1,7 +1,7 @@
 package model;
 import java.util.ArrayList;
 
-public class Premium extends Consumer{
+public class Premium extends Consumer implements iPlay{
     
     private ArrayList<Playlist> playlists;
     
@@ -76,6 +76,23 @@ public class Premium extends Consumer{
 
         return msg;
         
+    }
+
+    @Override
+    public String playSong(){
+
+        String songPlaying = "";
+
+        return songPlaying;
+    }
+
+    @Override
+    public String playPodcast(){
+        
+        String podcastPlaying = "";
+
+
+        return podcastPlaying;
     }
 
     

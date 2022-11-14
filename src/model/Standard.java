@@ -1,6 +1,6 @@
 package model;
 
-public class Standard extends Consumer{
+public class Standard extends Consumer implements iPlay{
     private static final int MAX_PLAYLIST = 20;
     private Playlist[] playlists;
 
@@ -101,5 +101,24 @@ public class Standard extends Consumer{
         }
 
         return msg;
+    }
+
+    @Override
+    public String playSong(){
+
+        String songPlaying = "";
+
+        
+
+        return songPlaying;
+    }
+
+    @Override
+    public String playPodcast(){
+        
+        String podcastPlaying = "";
+
+
+        return podcastPlaying;
     }
 }

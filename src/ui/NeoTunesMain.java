@@ -228,6 +228,7 @@ public class NeoTunesMain{
 				break;
 
 			case 2: 
+				addPodcast();
 				break;
 		}
 	}
@@ -240,7 +241,7 @@ public class NeoTunesMain{
 		System.out.println("Ingrese el nombre de la cancion");
 		String name = reader.next();
 
-		System.out.println("Ingrese el url de una imagen del album ala que pertence la cancion");
+		System.out.println("Ingrese el url de una imagen del album a la que pertence la cancion");
 		String imageURL = reader.next();
 
 		System.out.println("Ingrese la duracion de la cancion. En el formato HH:MM:SS");
@@ -265,25 +266,35 @@ public class NeoTunesMain{
 		System.out.println(objTunes.addSong2Artist(id, name, imageURL, duration, numPlayed, album, price,opGender));
 	}
 
-	public void addPremium(){
-
-		System.out.println("Ingrese el id del creador de contenido al que le pertenece el podcast");
+	public void addPodcast(){
+		System.out.println("Ingrese la cedula del creador de contenido al que le pertenece el podcast");
 		String id = reader.next();
 
-		System.out.println("Ingrese el nombre de la canción");
+		System.out.println("Ingrese el nombre del podcast");
 		String name = reader.next();
 
-		System.out.println("Ingrese el url de la imagen que representa el podcast");
+		System.out.println("Ingrese el url de una imagen que represente el podcast");
 		String imageURL = reader.next();
 
 		System.out.println("Ingrese la duracion del podcast. En el formato HH:MM:SS");
 		String duration = reader.next();
 
-		System.out.println("Ingrese la descripcion del podcast");
+		System.out.println("Ingrese el numero de reproducciones del podcast que tiene hasta ahora");
+		int numPlayed = reader.nextInt();
+
+		System.out.println("Ingrese una breve descripcion del podcast");
 		String description = reader.next();
 
-		System.out.println(objTunes.addPodcast2ContentCreator(id, name, imageURL, duration, 0, description));
+		System.out.println("Escoja la categoria del podcast: \n"+
+		"1) Politica\n" + 
+		"2) Entretenimiento\n " + 
+		"3) Fashion\n"+ 
+		"4) Videojuegos\n");
+		int opCategory = reader.nextInt();
+
+		System.out.println(objTunes.addPodcast2ContentCreator(id, name, imageURL, duration, numPlayed, description, opCategory));
 	}
+
 
 	public void createPlaylist(){
 

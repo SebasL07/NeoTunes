@@ -130,14 +130,14 @@ public class NeoTunes{
         return msg;
     }
 
-    public String addPodcast2ContentCreator(String id, String name, String imageURL, String duration, int numPlayed, String description){
+    public String addPodcast2ContentCreator(String id, String name, String imageURL, String duration, int numPlayed, String description, int opCategory){
 
         String msg = "No se pudo crear el podcast.";
 
         ContentCreator obContentCreator =  searchContentCreator(id);
 
         if(obContentCreator != null){
-            obContentCreator.addPodcast(name, imageURL, duration, numPlayed, description);
+            obContentCreator.addPodcast(name, imageURL, duration, numPlayed, description,opCategory);
             msg = "Se ha creado el podcast en la aplicacion";
         } else{
             msg += " Artista no existente.";

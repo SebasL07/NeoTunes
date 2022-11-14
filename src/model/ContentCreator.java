@@ -11,11 +11,11 @@ public class ContentCreator extends Producer{
         podcasts = new ArrayList<Podcast>();
     }
 
-    public String addPodcast(String name, String imageURL, String duration, int numPlayed, String description){
+    public String addPodcast(String name, String imageURL, String duration, int numPlayed, String description, int opCategory){
         
         String msg = "No se pudo crear el podcast";
 
-        podcasts.add(new Podcast(name, imageURL, duration, numPlayed, description));
+        podcasts.add(new Podcast(name, imageURL, duration, numPlayed, description,opCategory));
         msg = "Se creo exitosamente el podcast";
 
         return msg;
