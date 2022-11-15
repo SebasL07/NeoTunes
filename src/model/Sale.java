@@ -4,22 +4,22 @@ public class Sale{
 
     private String nameBuyer;
     private Date buyDate;
-    private String nameAudioBuyed;
-    private double priceSale;
+    private Song buyedSong;
 
-    public Sale(String nameBuyer, Date date, String nameAudioBuyed, double priceSale){
+    public Sale(String nameBuyer, Date date, Song song){
 
         this.nameBuyer = nameBuyer;
         this.buyDate = date;
-        this.nameAudioBuyed = nameAudioBuyed;
-        this.priceSale = priceSale;
+        buyedSong = song;
+        
     }
 
     public String toString(){
        
         return "Nombre del comprador: " + nameBuyer + "\n" +
         "Fecha de la compra: " + buyDate.toString() + "\n" + 
-        "Nombre del audio: " + nameAudioBuyed + "\n" + 
-        "Valor de compra: " + priceSale;
+        "Información de la cancion: \n "+ 
+        buyedSong.toString();
+        
     }
 }

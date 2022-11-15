@@ -328,7 +328,7 @@ public class NeoTunes{
      * @param idArtist
      * @param nameSong
      * @param moneyReceived
-     * @return
+     * @return confirmation msg
      */
     public String buyASongPremium(String idPremium, String idArtist, String nameSong, double moneyReceived){
         
