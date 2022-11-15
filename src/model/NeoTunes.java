@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class NeoTunes{
     
     private ArrayList<User> users;
+    private ArrayList<Sale> sales;
 
     public NeoTunes(){
         users = new ArrayList<User>();
+        sales = new ArrayList<Sale>();
     }
 
     public String addConsumerStandard(String nickname, String id, int day, int month, int year){

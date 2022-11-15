@@ -36,4 +36,8 @@ public class Date{
     public void setYear(int y){
         year = y;
     }
+
+    public String toString(){
+        return day + "/" + month + "/" + year;
+    }
 }
