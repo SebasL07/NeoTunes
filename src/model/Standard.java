@@ -2,12 +2,15 @@ package model;
 
 public class Standard extends Consumer implements iPlay{
     private static final int MAX_PLAYLIST = 20;
+    private static final int MAX_AUDIOS = 100;
     private Playlist[] playlists;
+    private Song[] songsBuyed;
 
     public Standard(String nickname, String id, Date date){
         super(nickname,id,date);
 
         playlists = new Playlist[MAX_PLAYLIST];
+        songsBuyed = new Song[MAX_AUDIOS];
     }
 
     public int findFreeSpace(){

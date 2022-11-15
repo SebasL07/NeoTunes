@@ -42,5 +42,9 @@ public class Song extends Audio{
         "Numero de ventas: " + numSales;
     }
 
+    public double getPrice(){
+        return price;
+    }
+
     
 }

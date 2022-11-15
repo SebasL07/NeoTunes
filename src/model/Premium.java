@@ -4,12 +4,14 @@ import java.util.ArrayList;
 public class Premium extends Consumer implements iPlay{
     
     private ArrayList<Playlist> playlists;
+    private ArrayList<Song> songsBuyed;
     
     public Premium(String nickname, String id, Date date){
 
         super(nickname,id,date);
 
         playlists = new ArrayList<Playlist>();
+        songsBuyed = new ArrayList<Song>();
 
     }
 
@@ -76,6 +78,16 @@ public class Premium extends Consumer implements iPlay{
 
         return msg;
         
+    }
+
+    public String addSongBuyed(Song song, double money){
+        String msg = "";
+        if(song.getPrice() <=money){
+            songsBuyed.add(song);
+        }else{
+            msg = "El dinero es insuficiente";
+        }
+        return msg;
     }
 
     @Override

@@ -322,7 +322,40 @@ public class NeoTunes{
         return idShare;
     }
 
-    
+    /**
+     * Method for buy a song for a premium user consumer(wip) --Falta añadir el objeto compra dentro de la controladora
+     * @param idPremium
+     * @param idArtist
+     * @param nameSong
+     * @param moneyReceived
+     * @return
+     */
+    public String buyASongPremium(String idPremium, String idArtist, String nameSong, double moneyReceived){
+        
+        String msg = "No se pudo realizar la transaccion. ";
+
+        Premium obPremium = searchPremium(idPremium);
+
+        Artist obArtist = searchArtist(idArtist);
+
+        if(obPremium != null && obArtist != null){
+            
+            Song song = obArtist.searchSong(nameSong);
+
+            if(song != null){
+
+                msg += obPremium.addSongBuyed(song, moneyReceived); 
+
+            } else{
+                msg += " No existe " + nameSong + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
     
 
 
