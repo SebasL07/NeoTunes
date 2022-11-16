@@ -352,6 +352,8 @@ public class NeoTunes{
                 msg += obPremium.addSongBuyed(song, moneyReceived); 
                 sales.add(new Sale(obPremium.getNickname(), song));
 
+                msg = "Se realizo la compra correctamente";
+
             } else{
                 msg += " No existe " + nameSong + " en la plataforma"; 
             }
@@ -379,6 +381,8 @@ public class NeoTunes{
 
                 msg += obStandard.addBuyedSong(song, moneyReceived); 
                 sales.add(new Sale(obStandard.getNickname(), song));
+
+                msg = "Se realizo la compra correctamente";
 
             } else{
                 msg += " No existe " + nameSong + " en la plataforma"; 

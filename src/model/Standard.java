@@ -154,6 +154,12 @@ public class Standard extends Consumer implements iPlay{
 
         
 
+        try {
+            wait(100);
+        } catch (InterruptedException e) {
+            System.out.println("wut");
+        }
+
         return songPlaying;
     }
 

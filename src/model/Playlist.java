@@ -85,10 +85,25 @@ public class Playlist{
 
         if(songsInPlaylist == 0 && podcastInPlaylist != 0){
             
-            
+            for(int j = 0; j<(id.length/2);j++){
+                shareId += id[0][j];
+            }
+
+            for(int i = 1; i<id.length;i++){
+                shareId += id[i][(id.length/2)-1];
+            }
+
+            for(int i = id.length-1;i>0;i--){
+                shareId += id[i][id.length/2];
+            }
+
+            for(int j = id.length/2;j<id.length;j++){
+                shareId += id[0][j];
+            }
+
         } else if(songsInPlaylist != 0 && podcastInPlaylist == 0){
 
-            for(int i = id.length-1;i<=0;i--){
+            for(int i = id.length-1;i>=0;i--){
                 shareId += id[i][0];
             }
 
@@ -96,13 +111,19 @@ public class Playlist{
                 shareId += id[i][i];
             }
 
-            for(int i = id.length-2;i<=0;i--){
+            for(int i = id.length-2;i>=0;i--){
                 shareId += id[i][id.length-1];
             }
 
         } else if(songsInPlaylist != 0 && podcastInPlaylist != 0){
 
-
+            for(int i = id.length - 1;i>=0;i-- ){
+                for(int j = id.length-1;j>=0;j--){
+                    if((i+j)%2 != 0 && (i+j) > 1){
+                        shareId += id[i][j];
+                    }
+                }
+            }
         }
 
         
