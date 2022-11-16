@@ -42,6 +42,12 @@ public class Artist extends Producer{
         return msg;
     }
 
+    /**
+     * Method to search a song in the array songs by the name
+     * pre: songs must be initialized
+     * @param name String, name in the song 
+     * @return song Song, object song that matchs the name
+     */
     public Song searchSong(String name){
 
         Song objSong = null;

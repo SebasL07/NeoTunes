@@ -1,10 +1,21 @@
 package model;
 
 public abstract class Audio{
-    
+    /**
+     * name is the name of the audio
+     */
     private String name;
+    /**
+     * imageURL is the URL of the album if song or a representative image if podcast
+    */
     private String imageURL;
+    /**
+     * duration represents the suration of the song
+     */
     private String duration;
+    /**
+     * 
+     */
     private int numPlayed;
 
     public Audio(String name, String imageURL, String duration, int numPlayed){
