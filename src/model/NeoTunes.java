@@ -2,6 +2,9 @@ package model;
 import java.util.ArrayList;
 
 
+
+
+
 public class NeoTunes{
     
     private ArrayList<User> users;
@@ -338,6 +341,8 @@ public class NeoTunes{
 
         Artist obArtist = searchArtist(idArtist);
 
+
+
         if(obPremium != null && obArtist != null){
             
             Song song = obArtist.searchSong(nameSong);
@@ -345,6 +350,7 @@ public class NeoTunes{
             if(song != null){
 
                 msg += obPremium.addSongBuyed(song, moneyReceived); 
+                sales.add(new Sale(obPremium.getNickname(), song));
 
             } else{
                 msg += " No existe " + nameSong + " en la plataforma"; 
@@ -355,6 +361,55 @@ public class NeoTunes{
         }
 
         return msg;
+    }
+
+    public String buyASongStandard(String idStandard, String idArtist, String nameSong, double moneyReceived){
+        
+        String msg = "No se pudo realizar la transaccion. ";
+
+        Standard obStandard = searchStandard(idStandard);
+
+        Artist obArtist = searchArtist(idArtist);
+
+        if(obStandard != null && obArtist != null){
+            
+            Song song = obArtist.searchSong(nameSong);
+
+            if(song != null){
+
+                msg += obStandard.addBuyedSong(song, moneyReceived); 
+                sales.add(new Sale(obStandard.getNickname(), song));
+
+            } else{
+                msg += " No existe " + nameSong + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
+    public String showPriceSong(String idArt, String nameSong){
+        String msg = "No existe el artista.";
+
+        Artist obArtist = searchArtist(idArt);
+
+        if(obArtist != null){
+
+            Song song = obArtist.searchSong(nameSong);
+
+            if(song != null){
+                msg = "Precio de la cancion: " + song.getPrice();
+            } else{
+                msg = "La cancion no existe";
+            }
+        }
+
+        return msg;
+
+
     }
     
 

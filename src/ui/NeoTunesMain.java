@@ -41,6 +41,8 @@ public class NeoTunesMain{
 		" 4) Crear playlist\n" +
 		" 5) Modificar playlist\n" +
 		" 6) Compartir Playlist\n" +
+		" 7) \n" +
+		" 8) Comprar cancion\n" +
 		" 0) Salir de la app\n");
 		int option = reader.nextInt();
 
@@ -72,6 +74,13 @@ public class NeoTunesMain{
 
 			case 6:
 				sharePlaylist();
+				break;
+
+			case 7:
+				break;
+
+			case 8:
+				buyASong();
 				break;
 				
 			case 0:
@@ -460,6 +469,37 @@ public class NeoTunesMain{
 				break;
 			case 2: 
 				break;
+		}
+	}
+
+	public void buyASong(){
+
+		System.out.println("El usuario que desea comprar es: \n 1) Estandar \n 2) Premium");
+		int op = reader.nextInt();
+
+		System.out.println("Ingrese el id del usuario que desea comprar");
+		String idUser = reader.next();
+
+		System.out.println("Ingrese el id del artista al que le pertenece la cancion");
+		String idArtist = reader.next();
+
+		System.out.println("Ingrese el nombre de la cancion");
+		String nameSong = reader.next();
+
+		System.out.println(objTunes.showPriceSong(idArtist, nameSong));
+
+		System.out.println("Ingrese el dinero que va a ingresar");
+		double price = reader.nextDouble();
+
+		switch(op){
+
+			case 1:
+				System.out.println(objTunes.buyASongStandard(idUser, idArtist, nameSong, price));
+				break;
+			case 2: 
+				System.out.println(objTunes.buyASongPremium(idUser, idArtist, nameSong, price));
+				break;
+
 		}
 	}
 

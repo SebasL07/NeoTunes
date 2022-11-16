@@ -26,7 +26,22 @@ public class Standard extends Consumer implements iPlay{
         }
 
         return pos;
-    } 
+    }
+    
+    public int findFreeSpaceBuyedSongs(){
+
+        int pos  = -1;
+        boolean flag = false;
+
+        for(int i = 0; i<MAX_AUDIOS&&!flag;i++){
+            if(songsBuyed[i] == null){
+                pos = i;
+                flag = true;
+            }
+        }
+
+        return pos;
+    }  
 
     public int findPlaylist(String name){
 
@@ -105,6 +120,32 @@ public class Standard extends Consumer implements iPlay{
 
         return msg;
     }
+
+    /**
+     * Method to add a buyed song 
+     * @param song
+     * @param money
+     * @return
+     */
+    public String addBuyedSong(Song song, double money){
+        
+        String msg = "";
+
+        int pos = findFreeSpaceBuyedSongs();
+        if(pos != -1){
+
+            if(song.getPrice() <=money){
+                songsBuyed[pos] = song;
+            }else{
+                msg = "El dinero es insuficiente";
+            }
+        } else{
+            msg = "No se puede comprar mas canciones";
+        }
+        
+        return msg;
+        
+    } 
 
     @Override
     public String playSong(){
