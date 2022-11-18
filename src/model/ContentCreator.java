@@ -47,7 +47,7 @@ public class ContentCreator extends Producer{
      * method to search a podcast in the arraylist of podcasts by the name
      * pre: podcasts must be initialized
      * @param name String, the name of the podcast to search 
-     * @return objPodcast Podcast,
+     * @return objPodcast Podcast, null if there's not coincedence  
      */
     public Podcast searchPodcast(String name){
 

@@ -5,12 +5,29 @@ import java.util.ArrayList;
 
 public class Playlist{
 
+    /**
+     * MAX_CODE size of the matrix id
+     */
     private static final int MAX_CODE = 6;
+    /**
+     * audios is the arraylist of audios 
+     */
     private ArrayList<Audio> audios; 
 
+    /**
+     * name is the name of the playlist 
+     */
     private String name;
+    /**
+     * id is the matrix that conatians the code that represents the playlist
+     * when is going to be shared
+     */
     private int[][] id;
 
+    /**
+     * constructor method of the class Playlist
+     * @param name String, name of the playlist
+     */
     public Playlist(String name){
         this.name = name;
 
@@ -19,6 +36,10 @@ public class Playlist{
         audios = new ArrayList<Audio>();
     }
 
+    /**
+     * method to count the songs in the playlsit
+     * @return countSong int, the quantity of songs in the playlist
+     */
     public int countSongs(){
         int countSong = 0;
         for(int i = 0; i < audios.size(); i++){
@@ -30,6 +51,7 @@ public class Playlist{
         return countSong;
     }
 
+    
     public void addSong(Song song){
         audios.add(song);
     }
