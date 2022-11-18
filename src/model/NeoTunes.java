@@ -415,6 +415,13 @@ public class NeoTunes{
 
 
     }
+
+    public String showInformationSalesByGender(){
+
+        String msg = "";
+
+        return msg;
+    }
     
 
 
