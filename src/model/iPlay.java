@@ -2,6 +2,6 @@ package model;
 
 public interface iPlay{
 
-    public abstract String playSong();
-    public abstract String playPodcast();
+    public abstract String playAudio(String namePodcast);
+   
 }

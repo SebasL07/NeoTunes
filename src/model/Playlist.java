@@ -155,6 +155,10 @@ public class Playlist{
 
     }
 
+    public ArrayList<Audio> getAudios(){
+        return audios;
+    }
+
     
 
 

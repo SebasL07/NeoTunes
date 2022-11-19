@@ -51,4 +51,12 @@ public abstract class Audio{
     public String getName(){
         return name;
     }
+
+    public String getDuration(){
+        return duration;
+    }
+
+    public void increaseNumPlayed(){
+        numPlayed++;
+    }
 }

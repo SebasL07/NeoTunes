@@ -147,28 +147,51 @@ public class Standard extends Consumer implements iPlay{
         
     } 
 
+    
+
     @Override
-    public String playSong(){
+    public String playAudio(String name){
 
-        String songPlaying = "";
-
+        String audioPlaying = "";
         
 
-        try {
-            wait(100);
-        } catch (InterruptedException e) {
-            System.out.println("Something went wrong...");
+        int pos = findPlaylist(name);
+
+        int countSong = 0;
+        int countPodcast = 0;
+
+        if(pos != -1){
+            
+            int size = playlists[pos].getAudios().size();
+            
+            for(int i = 0; i<size;i++){
+
+                audioPlaying = "Se esta reproduciendo " + playlists[pos].getAudios().get(i).getName();
+
+                if(playlists[pos].getAudios().get(i) instanceof Song){
+                    countSong++;
+                }else if(playlists[pos].getAudios().get(i) instanceof Podcast){
+                    countPodcast++;
+                }
+
+                try {
+                    wait(1800);
+                } catch (InterruptedException e) {
+                    System.out.println("Something went wrong...");
+                }
+
+                
+        
+            }
+           
+
+           
         }
 
-        return songPlaying;
-    }
-
-    @Override
-    public String playPodcast(){
         
-        String podcastPlaying = "";
 
-
-        return podcastPlaying;
+        return audioPlaying;
     }
+
+    
 }

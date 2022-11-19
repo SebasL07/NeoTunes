@@ -416,9 +416,19 @@ public class NeoTunes{
 
     }
 
+    public String playAudioStandard(){
+
+        String playing = "";
+
+        
+        return playing;
+    }
+
     public String showInformationSalesByGender(){
 
         String msg = "";
+
+
 
         return msg;
     }

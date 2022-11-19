@@ -46,5 +46,9 @@ public class Song extends Audio{
         return price;
     }
 
+    public void increaseNumSales(){
+        numSales++;
+    }
+
     
 }
