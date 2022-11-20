@@ -41,7 +41,7 @@ public class NeoTunesMain{
 		" 4) Crear playlist\n" +
 		" 5) Modificar playlist\n" +
 		" 6) Compartir Playlist\n" +
-		" 7) \n" +
+		" 7) Reproducir audio\n" +
 		" 8) Comprar cancion\n" +
 		" 0) Salir de la app\n");
 		int option = reader.nextInt();
@@ -77,6 +77,7 @@ public class NeoTunesMain{
 				break;
 
 			case 7:
+				playPlaylist();
 				break;
 
 			case 8:
@@ -501,6 +502,57 @@ public class NeoTunesMain{
 				System.out.println(objTunes.buyASongPremium(idUser, idArtist, nameSong, price));
 				break;
 
+		}
+	}
+
+	public void playPlaylist(){
+
+		System.out.println("De que tipo de usuario quiere reproducir musica?\n 1) Estandar \n 2) Premium");
+		int op = reader.nextInt();
+
+		System.out.println("Ingrese el id del usuario");
+		String id = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist que quiere reproducir");
+		String namePlaylist = reader.next();
+
+		int counter = 0;
+		int opContinue = 0;
+		switch(op){
+
+			case 1:
+				do{
+
+					System.out.println(objTunes.playAudioStandard(id, namePlaylist,counter));
+					counter++;
+
+					try {
+						Thread.sleep(18000);
+					} catch (Exception e) {
+						System.out.println("Something went wrong...");
+					}
+					System.out.println("Desea reproducie el siguiente audio?");
+					opContinue = reader.nextInt();
+
+				}while(opContinue != 0);
+				break;
+
+			case 2: 
+				do{
+
+					System.out.println(objTunes.playAudioPremium(id, namePlaylist,counter));
+					counter++;
+
+					try {
+						Thread.sleep(18000);
+					} catch (Exception e) {
+						System.out.println("Something went wrong...");
+					}
+					System.out.println("Desea reproducie el siguiente audio?");
+					opContinue = reader.nextInt();
+
+				}while(opContinue != 0);
+				break;
 		}
 	}
 

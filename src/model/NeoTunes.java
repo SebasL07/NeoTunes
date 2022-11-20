@@ -434,13 +434,45 @@ public class NeoTunes{
 
     }
 
-    public String playAudioStandard(){
+    public String playAudioStandard(String idStandard, String namePlay, int posArray){
 
         String playing = "";
+
+        Standard standard = searchStandard(idStandard);
+
+        if(standard != null){
+
+            playing = standard.playAudio(namePlay, posArray);
+
+        } else{
+
+            playing = "No existe el usuario en la plataforma";
+        }
 
         
         return playing;
     }
+
+    public String playAudioPremium(String idPremium, String namePlay, int posArray){
+
+        String playing = "";
+
+        Premium premium = searchPremium(idPremium);
+
+        if(premium != null){
+
+            playing = premium.playAudio(namePlay, posArray);
+
+        } else{
+
+            playing = "No existe el usuario en la plataforma";
+        }
+
+        
+        return playing;
+    }
+
+
 
     public String showInformationSalesByGender(){
 

@@ -104,8 +104,16 @@ public class Premium extends Consumer implements iPlay{
     }
 
     @Override
-    public String playAudio(String namePlaylist){
+    public String playAudio(String namePlaylist, int posArray){
         String playingAudio = "";
+
+        Playlist playlist = searchPlaylist(namePlaylist);
+
+        if(playlist != null){
+
+            playingAudio = "Se esta reproduciendo " + playlist.getAudios().get(posArray).getName();
+            
+        }
 
         return playingAudio;
     }
