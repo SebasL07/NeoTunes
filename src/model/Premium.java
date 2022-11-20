@@ -90,21 +90,24 @@ public class Premium extends Consumer implements iPlay{
         return msg;
     }
 
-    @Override
-    public String playSong(){
+    public String sharePlaylist(String namePlaylist){
 
-        String songPlaying = "";
+        String msg = "";
 
-        return songPlaying;
+        Playlist playlist = searchPlaylist(namePlaylist);
+
+        if(playlist != null){
+            msg = playlist.generSharePlaylist();
+        }
+
+        return msg;
     }
 
     @Override
-    public String playPodcast(){
-        
-        String podcastPlaying = "";
+    public String playAudio(String namePlaylist){
+        String playingAudio = "";
 
-
-        return podcastPlaying;
+        return playingAudio;
     }
 
     

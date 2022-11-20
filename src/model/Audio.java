@@ -59,4 +59,8 @@ public abstract class Audio{
     public void increaseNumPlayed(){
         numPlayed++;
     }
+
+    public int getNumPlayed(){
+        return numPlayed;
+    }
 }

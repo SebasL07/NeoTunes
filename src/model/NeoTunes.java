@@ -325,6 +325,20 @@ public class NeoTunes{
         return idShare;
     }
 
+    public String sharePlaylistPremium(String idPremium, String namePlaylist){
+
+        String idShare = "";
+
+        Premium obPremium = searchPremium(idShare);
+
+        if(obPremium != null){
+
+            idShare  = obPremium.sharePlaylist(namePlaylist);
+        }
+
+        return idShare;
+    }
+
     /**
      * Method for buy a song for a premium user consumer(wip) --Falta añadir el objeto compra dentro de la controladora
      * @param idPremium
@@ -351,6 +365,8 @@ public class NeoTunes{
 
                 msg += obPremium.addSongBuyed(song, moneyReceived); 
                 sales.add(new Sale(obPremium.getNickname(), song));
+
+                song.increaseNumPlayed();
 
                 msg = "Se realizo la compra correctamente";
 
@@ -382,6 +398,8 @@ public class NeoTunes{
                 msg += obStandard.addBuyedSong(song, moneyReceived); 
                 sales.add(new Sale(obStandard.getNickname(), song));
 
+                song.increaseNumPlayed();
+                
                 msg = "Se realizo la compra correctamente";
 
             } else{

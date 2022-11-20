@@ -453,7 +453,7 @@ public class NeoTunesMain{
 
 	public void sharePlaylist(){
 
-		System.out.println("De que tipo de usuario quiere compartir la playlist?");
+		System.out.println("De que tipo de usuario quiere compartir la playlist?\n 1) Estandar \n 2) Premium");
 		int op  = reader.nextInt();
 
 		System.out.println("Ingrese el id del usuario que desea compartir la playlist");
@@ -468,6 +468,7 @@ public class NeoTunesMain{
 				 System.out.println(objTunes.sharePlaylistStandard(idStandard, namePlaylist));
 				break;
 			case 2: 
+				System.out.println(objTunes.sharePlaylistPremium(idStandard, namePlaylist));
 				break;
 		}
 	}

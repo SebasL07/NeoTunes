@@ -147,8 +147,6 @@ public class Standard extends Consumer implements iPlay{
         
     } 
 
-    
-
     @Override
     public String playAudio(String name){
 
