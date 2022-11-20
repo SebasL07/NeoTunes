@@ -51,15 +51,24 @@ public class Playlist{
         return countSong;
     }
 
-    
+    /**
+     * method to add a Song to the array
+     * @param song Song
+     */
     public void addSong(Song song){
         audios.add(song);
     }
-    
+    /**
+     * method to add Podcast to the array
+     * @param podcast Podcast
+     */
     public void addPodcast(Podcast podcast){
         audios.add(podcast);
     }
-    
+    /**
+     * method to count the quantity of podcasts in the array
+     * @return countPodcasts int, the total of podcasts in the array
+     */
     public int countPodcasts(){
         int countPodcast = 0;
         for(int i = 0; i < audios.size(); i++){
@@ -70,11 +79,17 @@ public class Playlist{
 
         return countPodcast;
     }
-
+    /**
+     * method to get the name of the playlist
+     * @return name String
+     */
     public String getName(){
         return name;
     }
-
+    /**
+     * Method to show the matrix id
+     * @return msg String 
+     */
     public String showID(){
 
         String msg = "";
@@ -89,7 +104,10 @@ public class Playlist{
 
         return msg;
     }
-
+    /**
+     * method to generate the code to share the playlist
+     * @return the code for share the playlist
+     */
     public String generSharePlaylist(){
 
         
@@ -154,7 +172,10 @@ public class Playlist{
         return shareId;
 
     }
-
+    /**
+     * method to get the arraylist of audios
+     * @return audios ArrayList<Audio>
+     */
     public ArrayList<Audio> getAudios(){
         return audios;
     }

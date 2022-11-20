@@ -39,7 +39,8 @@ public class Song extends Audio{
         "Genero: " + gender + "\n" +  
         "Album: " + album + "\n"+ 
         "Precio: " + price + "\n" + 
-        "Numero de ventas: " + numSales;
+        "Numero de ventas: " + numSales + 
+        "Total de ventas: $" + (numSales * price);
     }
 
     public double getPrice(){
@@ -50,5 +51,8 @@ public class Song extends Audio{
         numSales++;
     }
 
+    public int getNumSales(){
+        return numSales;
+    }
     
 }

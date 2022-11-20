@@ -34,10 +34,15 @@ public abstract class Producer extends User{
 
     @Override
     public String toString(){
+
         return super.toString() + 
         "Nombre real: " + name + "\n" + 
         "Imagen: " + imageURL + "\n" + 
         "Tiempo total de reproduccion: " + playedTime + "\n" + 
         "Numero de reproducciones: " + reproductions + "\n"; 
+    }
+
+    public void setReprductions(int r){
+        reproductions = r;
     }
 }

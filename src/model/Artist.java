@@ -49,6 +49,7 @@ public class Artist extends Producer{
      * @return song Song, object song that matchs the name
      */
     public Song searchSong(String name){
+    
 
         Song objSong = null;
         boolean flag = false;
@@ -61,5 +62,18 @@ public class Artist extends Producer{
         }
 
         return objSong;
+    }
+
+    public int totalNumPlayed(){
+
+        int total = 0;
+
+        for(int i = 0; i<songs.size();i++){
+            total += songs.get(i).getNumPlayed();
+        }
+
+        super.setReprductions(total);
+        
+        return total;
     }
 }

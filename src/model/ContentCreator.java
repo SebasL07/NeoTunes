@@ -63,4 +63,17 @@ public class ContentCreator extends Producer{
 
         return objPodcast;
     }
+
+    public int totalNumPlayed(){
+
+        int total = 0;
+
+        for(int i = 0; i<podcasts.size();i++){
+            total += podcasts.get(i).getNumPlayed();
+        }
+
+        super.setReprductions(total);
+
+        return total;
+    }
 }

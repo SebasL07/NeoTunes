@@ -1,6 +1,5 @@
 package ui;
 import java.util.Scanner;
-
 import model.NeoTunes;
 
 //javac -cp src src/ui/Template.java -d bin
@@ -554,6 +553,25 @@ public class NeoTunesMain{
 				}while(opContinue != 0);
 				break;
 		}
+	}
+
+	public void showRequestedInfo(){
+
+		System.out.println("Que informacion desea ver?\n" + 
+		" 1) Total de reproducciones por audio");
+		int op = reader.nextInt();
+
+		switch(op){
+			case 1: 
+				System.out.println(objTunes.showInformationNumPlayedAudios());
+				break;
+
+			case 2:
+				 
+				break;
+
+		}
+		
 	}
 
 

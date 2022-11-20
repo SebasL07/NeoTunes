@@ -472,16 +472,58 @@ public class NeoTunes{
         return playing;
     }
 
-
-
-    public String showInformationSalesByGender(){
+    /**
+     * Method to count the total of times that each kind of audio has been played
+     * @return msg with the information
+     */
+    public String showInformationNumPlayedAudios(){
 
         String msg = "";
 
+        int numPlayedSong = 0;
+        int numPlayedPodcast = 0;
 
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof Artist){
+               Artist artist = (Artist) users.get(i);
+
+               numPlayedSong += artist.totalNumPlayed();
+            } else if(users.get(i) instanceof ContentCreator){
+                ContentCreator creator = (ContentCreator) users.get(i);
+
+                numPlayedPodcast += creator.totalNumPlayed();  
+            }
+        }
+
+        msg = "Total de reproducciones de canciones: " + numPlayedSong + "\n"+
+        "Total de reproducciones de podcast: " + numPlayedPodcast + "\n";
 
         return msg;
     }
+
+    public String findMostSaledSong(){
+
+		String msg = "";
+
+        int higherSales = sales.get(0).getBuyedSong().getNumSales();
+        int pos = 0;
+
+		for(int i = 0; i<sales.size();i++){
+            
+            if(higherSales < sales.get(i).getBuyedSong().getNumSales()){
+                higherSales = sales.get(i).getBuyedSong().getNumSales();
+                pos = i;
+            }
+
+		}
+
+        msg = sales.get(pos).getBuyedSong().toString();
+
+        
+
+		return msg;
+	}
     
 
 

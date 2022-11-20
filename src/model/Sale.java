@@ -23,4 +23,8 @@ public class Sale{
         buyedSong.toString();
         
     }
+
+    public Song getBuyedSong(){
+        return buyedSong;
+    }
 }
