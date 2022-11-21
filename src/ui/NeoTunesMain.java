@@ -42,7 +42,7 @@ public class NeoTunesMain{
 		" 6) Compartir Playlist\n" +
 		" 7) Reproducir audio\n" +
 		" 8) Comprar cancion\n" +
-		" 9) Informes de la plataforma" +
+		" 9) Informes de la plataforma\n" +
 		" 0) Salir de la app\n");
 		int option = reader.nextInt();
 

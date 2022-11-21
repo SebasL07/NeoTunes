@@ -509,7 +509,12 @@ public class NeoTunes{
 
         return msg;
     }
-
+    /**
+     * Method to show
+     * @param idArt
+     * @param nameSong
+     * @return
+     */
     public String showPriceSong(String idArt, String nameSong){
         String msg = "No existe el artista.";
 
@@ -530,7 +535,13 @@ public class NeoTunes{
 
 
     }
-
+    /**
+     * Method to play a playlist standard
+     * @param idStandard String, id from the owner of teh playlist
+     * @param namePlay String, name of the playlist
+     * @param posArray int, position in the array for playing the next audio
+     * @return playing the current audio playing
+     */
     public String playAudioStandard(String idStandard, String namePlay, int posArray){
 
         String playing = "";
