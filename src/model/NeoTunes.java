@@ -463,7 +463,7 @@ public class NeoTunes{
                 msg += obPremium.addSongBuyed(song, moneyReceived); 
                 sales.add(new Sale(obPremium.getNickname(), song));
 
-                song.increaseNumPlayed();
+                song.increaseNumSales();
 
                 msg = "Se realizo la compra correctamente";
 
@@ -495,7 +495,7 @@ public class NeoTunes{
                 msg += obStandard.addBuyedSong(song, moneyReceived); 
                 sales.add(new Sale(obStandard.getNickname(), song));
 
-                song.increaseNumPlayed();
+                song.increaseNumSales();
                 
                 msg = "Se realizo la compra correctamente";
 

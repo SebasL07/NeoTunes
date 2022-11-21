@@ -45,7 +45,7 @@ public class NeoTunesMain{
 		" 9) Informes de la plataforma\n" +
 		" 0) Salir de la app\n");
 		int option = reader.nextInt();
-
+		reader.nextLine();
 		return option;
 	}
 
@@ -100,7 +100,7 @@ public class NeoTunesMain{
 		"2) Premium\n");
 
 		int option = reader.nextInt();
-
+		reader.nextLine();
 		switch(option){
 
 			case 1:
@@ -120,7 +120,7 @@ public class NeoTunesMain{
 		"2) Creador de contenido\n");
 
 		int option = reader.nextInt();
-
+		reader.nextLine();
 		switch(option){
 
 			case 1:
@@ -143,13 +143,13 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese que dia de hoy (Solo numero)");
 		int day = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que mes estamos (Solo numero)");
 		int month = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que anio estamos (Solo numero)");
 		int year = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println(objTunes.addConsumerStandard(nickname, id, day, month, year)); 
 	}
 
@@ -163,13 +163,13 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese que dia de hoy (Solo numero)");
 		int day = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que mes estamos (Solo numero)");
 		int month = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que anio estamos (Solo numero)");
 		int year = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println(objTunes.addConsumerPremium(nickname, id, day, month, year)); 
 	}
 
@@ -183,13 +183,13 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese que dia de hoy (Solo numero)");
 		int day = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que mes estamos (Solo numero)");
 		int month = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que anio estamos (Solo numero)");
 		int year = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el nombre real del artista");
 		String name = reader.next();
 
@@ -211,13 +211,13 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese que dia de hoy (Solo numero)");
 		int day = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que mes estamos (Solo numero)");
 		int month = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese en que anio estamos (Solo numero)");
 		int year = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el nombre real del artista");
 		String name = reader.next();
 
@@ -234,7 +234,7 @@ public class NeoTunesMain{
 		" 1) Cancion\n" + 
 		" 2) Podcast\n");
 		int option = reader.nextInt();
-
+		reader.nextLine();
 		switch(option){
 
 			case 1:
@@ -263,7 +263,7 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese el numero de reproducciones de la cancion");
 		int numPlayed = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el album al que pertence la cancion");
 		String album = reader.next();
 
@@ -273,10 +273,10 @@ public class NeoTunesMain{
 		" 3) Rock\n" + 
 		" 4) Trap\n");
 		int opGender = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el precio de la cancion");
 		double price = reader.nextDouble();
-
+		reader.nextLine();
 		System.out.println(objTunes.addSong2Artist(id, name, imageURL, duration, numPlayed, album, price,opGender));
 	}
 
@@ -295,7 +295,7 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese el numero de reproducciones del podcast que tiene hasta ahora");
 		int numPlayed = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese una breve descripcion del podcast");
 		String description = reader.next();
 
@@ -305,7 +305,7 @@ public class NeoTunesMain{
 		"3) Fashion\n"+ 
 		"4) Videojuegos\n");
 		int opCategory = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println(objTunes.addPodcast2ContentCreator(id, name, imageURL, duration, numPlayed, description, opCategory));
 	}
 
@@ -316,7 +316,7 @@ public class NeoTunesMain{
 		" 2) Premium\n");	
 
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		switch (op) {
 			case 1:
 
@@ -360,7 +360,7 @@ public class NeoTunesMain{
 		" 1) Adcionar audio\n" + 
 		" 2) Borrar audio\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		switch(op){
 
 			case 1: 
@@ -378,7 +378,7 @@ public class NeoTunesMain{
 		" 1) Cancion\n" + 
 		" 2) Podcast\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		switch(op){
 
 			case 1: 
@@ -397,7 +397,7 @@ public class NeoTunesMain{
 		" 1) Cancion\n" + 
 		" 2) Podcast\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		switch(op){
 
 			case 1: 
@@ -417,7 +417,7 @@ public class NeoTunesMain{
 		" 1) Estandar\n" + 
 		" 2) Premium\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
 		String id = reader.next();
 
@@ -449,7 +449,7 @@ public class NeoTunesMain{
 		" 1) Estandar\n" + 
 		" 2) Premium\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
 		String id = reader.next();
 
@@ -481,7 +481,7 @@ public class NeoTunesMain{
 		" 1) Estandar\n" + 
 		" 2) Premium\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
 		String id = reader.next();
 
@@ -513,7 +513,7 @@ public class NeoTunesMain{
 		" 1) Estandar\n" + 
 		" 2) Premium\n");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
 		String id = reader.next();
 
@@ -543,7 +543,7 @@ public class NeoTunesMain{
 
 		System.out.println("De que tipo de usuario quiere compartir la playlist?\n 1) Estandar \n 2) Premium");
 		int op  = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario que desea compartir la playlist");
 		String idStandard = reader.next();
 		
@@ -565,7 +565,7 @@ public class NeoTunesMain{
 
 		System.out.println("El usuario que desea comprar es: \n 1) Estandar \n 2) Premium");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario que desea comprar");
 		String idUser = reader.next();
 
@@ -579,7 +579,7 @@ public class NeoTunesMain{
 
 		System.out.println("Ingrese el dinero que va a ingresar");
 		double price = reader.nextDouble();
-
+		reader.nextLine();
 		switch(op){
 
 			case 1:
@@ -596,7 +596,7 @@ public class NeoTunesMain{
 
 		System.out.println("De que tipo de usuario quiere reproducir musica?\n 1) Estandar \n 2) Premium");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		System.out.println("Ingrese el id del usuario");
 		String id = reader.next();
 
@@ -651,7 +651,7 @@ public class NeoTunesMain{
 		" 3) Ventas por genero\n"+
 		" 4) Top 5 Artistas y Creadores de contenido");
 		int op = reader.nextInt();
-
+		reader.nextLine();
 		switch(op){
 			case 1: 
 				System.out.println(objTunes.showInformationNumPlayedAudios());
