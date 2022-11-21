@@ -42,6 +42,7 @@ public class NeoTunesMain{
 		" 6) Compartir Playlist\n" +
 		" 7) Reproducir audio\n" +
 		" 8) Comprar cancion\n" +
+		" 9) Informes de la plataforma" +
 		" 0) Salir de la app\n");
 		int option = reader.nextInt();
 
@@ -81,6 +82,10 @@ public class NeoTunesMain{
 
 			case 8:
 				buyASong();
+				break;
+
+			case 9:
+				showRequestedInfo();
 				break;
 				
 			case 0:
@@ -304,7 +309,6 @@ public class NeoTunesMain{
 		System.out.println(objTunes.addPodcast2ContentCreator(id, name, imageURL, duration, numPlayed, description, opCategory));
 	}
 
-
 	public void createPlaylist(){
 
 		System.out.println("De que tipo de usuario quiere crear la playlist\n" + 
@@ -364,6 +368,7 @@ public class NeoTunesMain{
 				break;
 
 			case 2: 
+				removeAudio2Playlist();
 				break;
 		}
 	}
@@ -382,6 +387,25 @@ public class NeoTunesMain{
 
 			case 2:
 			 	addPodcast2Playlist();
+				break;
+
+		}
+	}
+
+	public void removeAudio2Playlist(){
+		System.out.println("Que tipo de audio adicionara?\n" +
+		" 1) Cancion\n" + 
+		" 2) Podcast\n");
+		int op = reader.nextInt();
+
+		switch(op){
+
+			case 1: 
+				removeSong2Playlist();
+				break;
+
+			case 2:
+			 	removePodcast2Playlist();
 				break;
 
 		}
@@ -419,6 +443,38 @@ public class NeoTunesMain{
 		}
 	}
 
+	public void removeSong2Playlist(){
+
+		System.out.println("A que tipo de usaurio borrara la cancion: \n" +
+		" 1) Estandar\n" + 
+		" 2) Premium\n");
+		int op = reader.nextInt();
+
+		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
+		String id = reader.next();
+
+		System.out.println("Ingrese el id del artista al que pertence la cancion");
+		String idArtist = reader.next();
+
+		System.out.println("Ingrese el nombre de la cancion");
+		String nameSong = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist a la que quiere borrar la cancion");
+		String namePlaylist = reader.next();
+
+		switch(op){
+
+			case 1: 
+				System.out.println(objTunes.removeSong2PlaylistStandard(id, nameSong, idArtist, namePlaylist));
+				break;
+
+			case 2:
+				System.out.println(objTunes.removeSong2PlaylistPremium(id, nameSong, idArtist, namePlaylist)); 
+				break;
+
+		}
+	}
+
 	public void addPodcast2Playlist(){
 
 		System.out.println("A que tipo de usaurio adicionara la cancion: \n" +
@@ -445,6 +501,38 @@ public class NeoTunesMain{
 			
 			case 2:
 				System.out.println(objTunes.addPodcast2PlaylistPremium(id, namePodcast, idContentCreator, namePlaylist));
+				break;
+			default:
+				break;
+		}
+	}
+
+	public void removePodcast2Playlist(){
+
+		System.out.println("A que tipo de usaurio borrara la cancion: \n" +
+		" 1) Estandar\n" + 
+		" 2) Premium\n");
+		int op = reader.nextInt();
+
+		System.out.println("Ingrese el id del usuario al que le pertence la playlist");
+		String id = reader.next();
+
+		System.out.println("Ingrese el id del creador de contenido");
+		String idContentCreator = reader.next();
+
+		System.out.println("Ingrese el nombre del podcast");
+		String namePodcast = reader.next();
+
+		System.out.println("Ingrese el nombre de la playlist a la que quiere borrar la cancion");
+		String namePlaylist = reader.next();
+
+		switch (op) {
+			case 1:
+				System.out.println(objTunes.removePodcast2PlaylistStandard(id, namePodcast, idContentCreator, namePlaylist));
+				break;
+			
+			case 2:
+				System.out.println(objTunes.removePodcast2PlaylistPremium(id, namePodcast, idContentCreator, namePlaylist));
 				break;
 			default:
 				break;
@@ -558,7 +646,10 @@ public class NeoTunesMain{
 	public void showRequestedInfo(){
 
 		System.out.println("Que informacion desea ver?\n" + 
-		" 1) Total de reproducciones por audio");
+		" 1) Total de reproducciones por audio\n"+
+		" 2) Cancion mas vendida de toda la plataforma\n" +
+		" 3) Ventas por genero\n"+
+		" 4) Top 5 Artistas y Creadores de contenido");
 		int op = reader.nextInt();
 
 		switch(op){
@@ -567,7 +658,15 @@ public class NeoTunesMain{
 				break;
 
 			case 2:
-				 
+				System.out.println(objTunes.findMostSaledSong());
+				break;
+			case 3:
+				System.out.println(objTunes.countGenderSales());
+				break;
+			
+			case 4:
+				System.out.println("Top artistas:\n" + objTunes.top5Artist() + "\n" +
+				"Top Creadores de contenido:\n " + objTunes.top5Creator());
 				break;
 
 		}

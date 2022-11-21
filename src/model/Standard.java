@@ -93,6 +93,22 @@ public class Standard extends Consumer implements iPlay{
         
     }
 
+    public String removeSong2Playlist(Song objSong, String name){
+
+        String msg = "No se pudo adicionar la cancion a la playlist.";
+        int pos = findPlaylist(name);
+
+        if(pos != -1){
+            playlists[pos].removeAudioSong(objSong);;
+            msg = "Se  ha adicionado la cancion exitosamente";
+        } else{
+            msg += " La playlist no existe";
+        }
+
+        return msg;
+        
+    }
+
     public String addPodcast2Playlist(Podcast objPodcast, String name){
 
         String msg = "No se pudo adicionar el podcast a la playlist.";
@@ -108,6 +124,22 @@ public class Standard extends Consumer implements iPlay{
         
     }
 
+    public String removePodcast2Playlist(Podcast objPodcast, String name){
+
+        String msg = "No se pudo adicionar el podcast a la playlist.";
+        int pos = findPlaylist(name);
+
+        if(pos != -1){
+            playlists[pos].removeAudioPodcast(objPodcast);
+        } else{
+            msg += " La playlist no existe";
+        }
+
+        return msg;
+        
+    }
+
+    
     public String sharePlaylist(String namePlaylist){
 
         String msg = "";

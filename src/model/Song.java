@@ -54,5 +54,9 @@ public class Song extends Audio{
     public int getNumSales(){
         return numSales;
     }
+
+    public Gender getGender(){
+        return gender;
+    }
     
 }

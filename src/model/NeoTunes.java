@@ -238,6 +238,30 @@ public class NeoTunes{
         return msg;
     }
 
+    public String removeSong2PlaylistStandard(String idStandard, String nameSong, String idArtist, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        Artist objArtist = searchArtist(idArtist);
+
+        Standard objStandard = searchStandard(idStandard);
+
+        if(objArtist != null && objStandard != null){
+            Song song = objArtist.searchSong(nameSong);
+
+            if(song != null){
+                msg = objStandard.removeSong2Playlist(song, namePlaylist);
+            } else{
+                msg += " No existe " + nameSong + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
     public String addSong2PlaylistPremium(String idPremium, String nameSong, String idArtist, String namePlaylist){
 
         String msg = "No se pudo adicionar la cancion.";
@@ -251,6 +275,30 @@ public class NeoTunes{
 
             if(song != null){
                 msg = objPremium.addSong2Playlist(song, namePlaylist);
+            } else{
+                msg += " No existe " + nameSong + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
+    public String removeSong2PlaylistPremium(String idPremium, String nameSong, String idArtist, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        Artist objArtist = searchArtist(idArtist);
+
+        Premium objPremium = searchPremium(idPremium);
+
+        if(objArtist != null && objPremium != null){
+            Song song = objArtist.searchSong(nameSong);
+
+            if(song != null){
+                msg = objPremium.removeSong2Playlist(song, namePlaylist);
             } else{
                 msg += " No existe " + nameSong + " en la plataforma"; 
             }
@@ -286,6 +334,30 @@ public class NeoTunes{
         return msg;
     }
 
+    public String removePodcast2PlaylistStandard(String idStandard, String namePodcast, String idContentCreator, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        ContentCreator objCreator = searchContentCreator(idContentCreator);
+
+        Standard objStandard = searchStandard(idStandard);
+
+        if(objCreator != null && objStandard != null){
+            Podcast podcast = objCreator.searchPodcast(namePodcast);
+
+            if(podcast != null){
+                msg = objStandard.removePodcast2Playlist(podcast, namePlaylist);
+            } else{
+                msg += " No existe " + namePodcast + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
     public String addPodcast2PlaylistPremium(String idPremium, String namePodcast, String idContentCreator, String namePlaylist){
 
         String msg = "No se pudo adicionar la cancion.";
@@ -300,6 +372,31 @@ public class NeoTunes{
 
             if(podcast != null){
                 msg = premium.addPodcast2Playlist(podcast, namePlaylist);
+            } else{
+                msg += " No existe " + namePodcast + " en la plataforma"; 
+            }
+
+        } else{
+            msg += " Alguno de los usuarios ingresados no existen en la plataforma";
+        }
+
+        return msg;
+    }
+
+    public String removePodcast2PlaylistPremium(String idPremium, String namePodcast, String idContentCreator, String namePlaylist){
+
+        String msg = "No se pudo adicionar la cancion.";
+
+        ContentCreator objCreator = searchContentCreator(idContentCreator);
+
+        Premium premium = searchPremium(idPremium);
+
+        if(objCreator != null && premium != null){
+            
+            Podcast podcast = objCreator.searchPodcast(namePodcast);
+
+            if(podcast != null){
+                msg = premium.removePodcast2Playlist(podcast, namePlaylist);
             } else{
                 msg += " No existe " + namePodcast + " en la plataforma"; 
             }
@@ -452,7 +549,13 @@ public class NeoTunes{
         
         return playing;
     }
-
+    /**
+     * Method to play a playlist premium
+     * @param idPremium String, id from the owner of teh playlist
+     * @param namePlay String, name of the playlist
+     * @param posArray int, position in the array for playing the next audio
+     * @return playing the current audio playing
+     */
     public String playAudioPremium(String idPremium, String namePlay, int posArray){
 
         String playing = "";
@@ -482,26 +585,36 @@ public class NeoTunes{
 
         int numPlayedSong = 0;
         int numPlayedPodcast = 0;
+        if(users.isEmpty()){
+            msg = "No hay registros en la plataforma";
+        } else{
+            for(int i = 0;i<users.size();i++){
 
-        for(int i = 0;i<users.size();i++){
-
-            if(users.get(i) instanceof Artist){
-               Artist artist = (Artist) users.get(i);
-
-               numPlayedSong += artist.totalNumPlayed();
-            } else if(users.get(i) instanceof ContentCreator){
-                ContentCreator creator = (ContentCreator) users.get(i);
-
-                numPlayedPodcast += creator.totalNumPlayed();  
+                if(users.get(i) instanceof Artist){
+                   Artist artist = (Artist) users.get(i);
+    
+                   numPlayedSong += artist.totalNumPlayed();
+                } else if(users.get(i) instanceof ContentCreator){
+                    ContentCreator creator = (ContentCreator) users.get(i);
+    
+                    numPlayedPodcast += creator.totalNumPlayed();  
+                }
             }
-        }
 
-        msg = "Total de reproducciones de canciones: " + numPlayedSong + "\n"+
-        "Total de reproducciones de podcast: " + numPlayedPodcast + "\n";
+            msg = "Total de reproducciones de canciones: " + numPlayedSong + "\n"+
+            "Total de reproducciones de podcast: " + numPlayedPodcast + "\n";
+        }
+        
+
+       
 
         return msg;
     }
 
+    /**
+     * method to find the most saled song in all the platform
+     * @return msg with the information of the most saled song
+     */
     public String findMostSaledSong(){
 
 		String msg = "";
@@ -524,9 +637,321 @@ public class NeoTunes{
 
 		return msg;
 	}
+
+    /**
+     * Method to count the sales by gender of song
+     * @return msg with the information 
+     */
+    public String countGenderSales(){
+
+        String msg = "";
+
+        int countPop = 0;
+        int countRock = 0;
+        int countTrap = 0;
+        int countHouse = 0;
+
+        double pricePop = 0;
+        double priceRock = 0;
+        double priceTrap = 0;
+        double priceHouse = 0;
+        
+
+        for(int i = 0;i<sales.size();i++){
+
+            if(sales.get(i).getBuyedSong().getGender() == Gender.POP){
+                countPop++;
+                pricePop += sales.get(i).getBuyedSong().getPrice();
+            } else if(sales.get(i).getBuyedSong().getGender() == Gender.ROCK){
+                countRock++;
+                priceRock += sales.get(i).getBuyedSong().getPrice();
+            } else if(sales.get(i).getBuyedSong().getGender() == Gender.TRAP){
+                countTrap++;
+                priceTrap += sales.get(i).getBuyedSong().getPrice();
+            }else if(sales.get(i).getBuyedSong().getGender() == Gender.HOUSE){
+                countHouse++;
+                priceHouse += sales.get(i).getBuyedSong().getPrice();
+            }
+        }
+
+        msg = "Cantidad de ventas por genero:\n" + 
+        "Pop: \n" + 
+        "Se vendieron " + countPop + " canciones del genero Pop y se obuvo una ganancia de " + (countPop*pricePop)+"\n"+
+        "Rock: \n" + 
+        "Se vendieron " + countRock + " canciones del genero Pop y se obuvo una ganancia de " + (countRock*priceRock)+"\n"+
+        "Trap: \n" + 
+        "Se vendieron " + countTrap + " canciones del genero Pop y se obuvo una ganancia de " + (countTrap*priceTrap)+"\n"+
+        "House: \n" + 
+        "Se vendieron " + countHouse + " canciones del genero Pop y se obuvo una ganancia de " + (countHouse*priceHouse) + "\n";
+
+        return msg;
+    }
     
+    /**
+     * Method to do the top 5 Artists in the platform
+     * @return msg with the top 5 artists in teh platform
+     */
+    public String top5Artist(){
+        
+        String msg = "";
+
+        int top1Artist = 0;
+        int compare = 0;
+        String top1 = "";
+        int top2Artist = 0;
+        String top2 = "";
+        int top3Artist = 0;
+        String top3 = "";
+        int top4Artist = 0;
+        String top4 = "";
+        int top5Artist = 0;
+        String top5 = "";
+
+        Artist obArtist = null;
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof Artist){
+
+                obArtist = (Artist) users.get(i);
+
+                compare = obArtist.getReproductions();
+
+            }
+
+            if(compare > top1Artist){
+                
+                top1Artist = obArtist.getReproductions();
+                top1 = obArtist.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof Artist){
+
+                obArtist = (Artist) users.get(i);
+
+                compare = obArtist.getReproductions();
+
+            }
+
+            if(compare > top2Artist && compare < top1Artist){
+                
+                top2Artist = obArtist.getReproductions();
+                top2 = obArtist.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof Artist){
+
+                obArtist = (Artist) users.get(i);
+
+                compare = obArtist.getReproductions();
+
+            }
+
+            if(compare > top3Artist && compare < top2Artist){
+                
+                top3Artist = obArtist.getReproductions();
+                top3 = obArtist.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof Artist){
+
+                obArtist = (Artist) users.get(i);
+
+                compare = obArtist.getReproductions();
+
+            }
+
+            if(compare > top4Artist && compare < top3Artist){
+                
+                top4Artist = obArtist.getReproductions();
+                top4 = obArtist.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof Artist){
+
+                obArtist = (Artist) users.get(i);
+
+                compare = obArtist.getReproductions();
+
+            }
+
+            if(compare > top5Artist && compare < top4Artist){
+                
+                top5Artist = obArtist.getReproductions();
+                top5 = obArtist.getName();
+
+            }
+        }
+
+        msg = "Top 5 Artsistas: \n"+
+        "1. " + top1 + "\n"+ 
+        "Numero de reproducciones: " + top1Artist+
+        "2. " + top2 + "\n"+ 
+        "Numero de reproducciones: " + top2Artist+
+        "3. " + top3 + "\n"+ 
+        "Numero de reproducciones: " + top3Artist+
+        "4. " + top4 + "\n"+ 
+        "Numero de reproducciones: " + top4Artist+
+        "5. " + top5 + "\n"+ 
+        "Numero de reproducciones: " + top5Artist;
+
+        
+
+        return msg;
+    }
+
+    /**
+     * Method to do the top 5 Content Creator in the platform
+     * @return msg with the top 5 content creator in the platform
+     */
+    public String top5Creator(){
+        
+        String msg = "";
 
 
+        int top1Creator = 0;
+        int top2Creator = 0;
+        int top3Creator = 0;
+        int top4Creator = 0;
+        int top5Creator = 0;
+        String top1 = "";
+        String top2 = "";
+        String top3 = "";
+        String top4 = "";
+        String top5 = "";
+
+        int compare = 0;
+        ContentCreator creator = null;
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof ContentCreator){
+
+                creator = (ContentCreator) users.get(i);
+
+                compare = creator.getReproductions();
+
+            }
+
+            if(compare > top1Creator){
+                
+                top1Creator = creator.getReproductions();
+                top1 = creator.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof ContentCreator){
+
+                creator = (ContentCreator) users.get(i);
+
+                compare = creator.getReproductions();
+
+            }
+
+            if(compare > top2Creator && compare < top1Creator){
+                
+                top2Creator = creator.getReproductions();
+                top2 = creator.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof ContentCreator){
+
+                creator = (ContentCreator) users.get(i);
+
+                compare = creator.getReproductions();
+
+            }
+
+            if(compare > top3Creator && compare < top2Creator){
+                
+                top3Creator = creator.getReproductions();
+                top3 = creator.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof ContentCreator){
+
+                creator = (ContentCreator) users.get(i);
+
+                compare = creator.getReproductions();
+
+            }
+
+            if(compare > top4Creator && compare < top3Creator){
+                
+                top4Creator = creator.getReproductions();
+                top4 = creator.getName();
+
+            }
+        }
+
+        for(int i = 0;i<users.size();i++){
+
+            if(users.get(i) instanceof ContentCreator){
+
+                creator = (ContentCreator) users.get(i);
+
+                compare = creator.getReproductions();
+
+            }
+
+            if(compare > top5Creator && compare < top4Creator){
+                
+                top5Creator = creator.getReproductions();
+                top5 = creator.getName();
+
+            }
+        }
+
+        msg = "Top 5 Artsistas: \n"+
+        "1. " + top1 + "\n"+ 
+        "Numero de reproducciones: " + top1Creator+
+        "2. " + top2 + "\n"+ 
+        "Numero de reproducciones: " + top2Creator+
+        "3. " + top3 + "\n"+ 
+        "Numero de reproducciones: " + top3Creator+
+        "4. " + top4 + "\n"+ 
+        "Numero de reproducciones: " + top4Creator+
+        "5. " + top5 + "\n"+ 
+        "Numero de reproducciones: " + top5Creator;
+
+        
+
+        return msg;
+
+        
+
+      
+    }
+
+
+    
 
 
     

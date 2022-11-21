@@ -59,6 +59,27 @@ public class Premium extends Consumer implements iPlay{
         
     }
 
+    public String removeSong2Playlist(Song objSong, String name){
+
+        String msg = "No se pudo adicionar la cancion a la playlist.";
+        
+        Playlist obPlaylist = searchPlaylist(name);
+        int pos = 0;
+
+        if(obPlaylist != null){
+            
+            pos = playlists.indexOf(obPlaylist);
+
+            playlists.get(pos).removeAudioSong(objSong);
+
+        } else{
+            msg += " La playlist no existe";
+        }
+
+        return msg;
+        
+    }
+
     public String addPodcast2Playlist(Podcast podcast, String name){
 
         String msg = "No se pudo adicionar la cancion a la playlist.";
@@ -71,6 +92,27 @@ public class Premium extends Consumer implements iPlay{
             pos = playlists.indexOf(obPlaylist);
 
             playlists.get(pos).addPodcast(podcast);
+
+        } else{
+            msg += " La playlist no existe";
+        }
+
+        return msg;
+        
+    }
+
+    public String removePodcast2Playlist(Podcast podcast, String name){
+
+        String msg = "No se pudo adicionar la cancion a la playlist.";
+        
+        Playlist obPlaylist = searchPlaylist(name);
+        int pos = 0;
+        
+        if(obPlaylist != null){
+            
+            pos = playlists.indexOf(obPlaylist);
+
+            playlists.get(pos).removeAudioPodcast(podcast);
 
         } else{
             msg += " La playlist no existe";

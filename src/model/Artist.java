@@ -73,7 +73,7 @@ public class Artist extends Producer{
         }
 
         super.setReprductions(total);
-        
+
         return total;
-    }
+    }  
 }

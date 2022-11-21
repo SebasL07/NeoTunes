@@ -180,6 +180,14 @@ public class Playlist{
         return audios;
     }
 
+    public void removeAudioSong(Song song){
+        audios.remove(song);
+    }
+
+    public void removeAudioPodcast(Podcast podcast){
+        audios.remove(podcast);
+    }
+
     
 
 
