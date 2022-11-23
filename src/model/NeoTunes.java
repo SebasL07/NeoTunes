@@ -641,6 +641,9 @@ public class NeoTunes{
             if(higherSales < sales.get(i).getBuyedSong().getNumSales()){
                 higherSales = sales.get(i).getBuyedSong().getNumSales();
                 pos = i;
+            }else if(i == 0 && higherSales < sales.get(i).getBuyedSong().getNumSales()){
+                higherSales = sales.get(i).getBuyedSong().getNumSales();
+                pos = i;
             }
 
 		}
