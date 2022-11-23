@@ -629,8 +629,11 @@ public class NeoTunes{
     public String findMostSaledSong(){
 
 		String msg = "";
-
-        int higherSales = sales.get(0).getBuyedSong().getNumSales();
+        int higherSales = 0;
+        if(!sales.isEmpty()){
+            higherSales = sales.get(0).getBuyedSong().getNumSales();
+        }
+       
         int pos = 0;
 
 		for(int i = 0; i<sales.size();i++){
